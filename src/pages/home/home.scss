@@ -1,3 +1,13 @@
-page-home {
+.homePageStyle{
+    background-color: #00BCD4;
+}
 
+.homePageStyle header{
+    text-align: center;
+}
+
+.homePageStyle ion-icon {
+    font-size: 200%;
+    color: red;
+    border : 2px solid green;
 }
