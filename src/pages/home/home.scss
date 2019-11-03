@@ -2,12 +2,44 @@
     background-color: #00BCD4;
 }
 
-.homePageStyle header{
-    text-align: center;
+ion-content{
+    grid-template-columns: 100%;
 }
 
-.homePageStyle ion-icon {
+.homePageStyle ion-card{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "header header header"
+                         "minus number add";
+    width: 80% !important;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    box-shadow: none !important;
+    background-color: #00BCD4;
+}
+
+ion-card-header{
+    grid-area: header;
+    text-align: center;
     font-size: 200%;
-    color: red;
-    border : 2px solid green;
+    font-weight: bold !important;
+}
+
+ion-card #addButton {
+    grid-area: add;
+    text-align: center;
+    font-size: 200%;
+}
+
+ion-card #minusButton {
+    grid-area: minus;
+    text-align: center;
+    font-size: 200%;
+}
+
+ion-card #content {
+    grid-area: number;
+    text-align: center;
+    font-size: 200%;
 }
