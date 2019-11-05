@@ -10,7 +10,8 @@ ion-content{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: "header header header"
-                         "minus number add";
+                         "minus number add"
+                         "play play play";
     width: 80% !important;
     margin: 0 auto;
     margin-top: 10%;
@@ -38,6 +39,12 @@ ion-card #addButton {
 
 ion-card #minusButton {
     grid-area: minus;
+}
+
+ion-card #playButton {
+    grid-area: play;
+    font-size: 200%;
+    text-align: center;
 }
 
 ion-card #content {

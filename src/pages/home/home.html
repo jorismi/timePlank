@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      TimePlank
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,34 +9,52 @@
 <ion-content class="homePageStyle">
 
   <ion-card>
-    <ion-card-header>SETS</ion-card-header>
-    <ion-icon name="remove-circle" id="minusButton"></ion-icon>
-    <label id="content">5</label>
-    <ion-icon name="add-circle" id="addButton"></ion-icon>
+    <ion-card-header>Number of reps</ion-card-header>
+    <button ion-button icon-only id="minusButton" (click)="changeRepsNumber(-1)">
+      <ion-icon name="remove-circle"></ion-icon>
+    </button>
+    <label id="content">{{repsNumber}}</label>
+    <button ion-button icon-only id="addButton" (click)="changeRepsNumber(+1)">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
   </ion-card>
 
   <ion-card>
     <ion-card-header>Working interval</ion-card-header>
-    <button ion-button icon-only id="minusButton" (click)="changeWorkInterval(-1)">
+    <button ion-button icon-only id="minusButton" (click)="removeWorkInterval()">
       <ion-icon name="remove-circle"></ion-icon>
     </button>
-    <label id="content"> nb : {{seconds}}</label>
-    <button ion-button icon-only id="addButton" (click)="changeWorkInterval(+1)">
+    <label id="content">{{workingMinutes}}:{{workingSeconds}}</label>
+    <button ion-button icon-only id="addButton" (click)="addWorkInterval()">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>Number of reps before rest</ion-card-header>
+    <button ion-button icon-only id="minusButton" (click)="changeWorkingChain(-1)">
+      <ion-icon name="remove-circle"></ion-icon>
+    </button>
+    <label id="content">{{workingChain}}</label>
+    <button ion-button icon-only id="addButton" (click)="changeWorkingChain(+1)">
       <ion-icon name="add-circle"></ion-icon>
     </button>
   </ion-card>
 
   <ion-card>
     <ion-card-header>Rest interval</ion-card-header>
-    <ion-icon name="remove-circle" id="minusButton"></ion-icon>
-    <label id="content" ng-value="count">{{count}}</label>
-    <ion-icon name="add-circle" id="addButton"></ion-icon>
+    <button ion-button icon-only id="minusButton" (click)="removeRestInterval()">
+      <ion-icon name="remove-circle"></ion-icon>
+    </button>
+    <label id="content">{{restingMinutes}}:{{restingSeconds}}</label>
+    <button ion-button icon-only id="addButton" (click)="addRestInterval()">
+      <ion-icon name="add-circle"></ion-icon>
+    </button>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>Number of working repetition before rest</ion-card-header>
-    <ion-icon name="remove-circle" id="minusButton"></ion-icon>
-    <label id="content">5</label>
-    <ion-icon name="add-circle" id="addButton"></ion-icon>
+    <button ion-button icon-only id="playButton" (click)="goToNextPage()">
+      <ion-icon name="md-arrow-dropright-circle"></ion-icon>
+    </button>
   </ion-card>
 </ion-content>
