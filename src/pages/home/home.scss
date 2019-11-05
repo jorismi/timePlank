@@ -26,16 +26,18 @@ ion-card-header{
     font-weight: bold !important;
 }
 
+ion-card .button{
+    text-align: center;
+    color: black;
+    background-color: #00BCD4;
+}
+
 ion-card #addButton {
     grid-area: add;
-    text-align: center;
-    font-size: 200%;
 }
 
 ion-card #minusButton {
     grid-area: minus;
-    text-align: center;
-    font-size: 200%;
 }
 
 ion-card #content {
