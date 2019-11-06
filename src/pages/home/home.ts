@@ -6,6 +6,7 @@
 
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { TimerPage } from '../timer/timer';
 
 const INCREMENT_STEP = 5;
 
@@ -98,6 +99,7 @@ export class HomePage {
   }
 
   goToNextPage(){
-    alert("PLAY!!");
+    this.navCtrl.push(TimerPage);
+    //this.navCtrl.setRoot(TimerPage);
   }
 }

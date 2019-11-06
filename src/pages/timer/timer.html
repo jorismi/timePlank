@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>timer</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="timerPageStyle">
+  <ion-card>
+    <ion-card-header>3</ion-card-header>
+    <ion-label id="timer">{{minutes}}02:50{{seconds}}</ion-label>
+    <ion-label id="sentence">GET READY</ion-label>
+  </ion-card>
+
+  <ion-card id="pauseButtonDiv">
+    <button ion-button icon-only id="pauseButton" (click)="goHomePage()">
+      <ion-icon name="pause"></ion-icon>
+    </button>
+  </ion-card>
+</ion-content>

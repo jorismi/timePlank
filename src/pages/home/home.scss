@@ -9,9 +9,9 @@ ion-content{
 .homePageStyle ion-card{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "header header header"
+    grid-template-areas: ". header ."
                          "minus number add"
-                         "play play play";
+                         ". play .";
     width: 80% !important;
     margin: 0 auto;
     margin-top: 10%;
