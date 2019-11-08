@@ -1,7 +1,9 @@
 // TODO //
-// Faire page du timer (Chrono + Pause)
-// Gerer changement de page lors de l'appui sur play (NavPush)
-// Gerer les changements de pages Working -> rest
+// Changer de couleur entre les phases
+// Faire un screen de fin (récap?)
+// Ajouter du son à la fin des rep
+// Variabiliser
+// Utilisation du modele?
 // Gerer l'appui long sur + et - des chrono pour ajouter ou enlever plus ou moins vite
 
 import { Component } from '@angular/core';
@@ -16,19 +18,35 @@ const INCREMENT_STEP = 5;
 })
 export class HomePage {
 
-  private repsNumber = 3;
+  private repsNumber = 2;
+  private initRepsNumber;
   private workingChain = 3;
-  private workingMinutes = "00";
+  remainingWorkingRep;
+  private workingMinutes = "01";
   private workingSeconds = "00";
-  private restingMinutes = "00";
+  private restingMinutes = "01";
   private restingSeconds = "00";
+  private currentReps = 0;
   constructor(public navCtrl: NavController) {
+  }
 
+  goToTimerPage() {
+    this.navCtrl.push(TimerPage, {
+      repsNumber: this.repsNumber,
+      initRepsNumber: this.repsNumber,
+      workingChain: this.workingChain,
+      workingMinutes: this.workingMinutes,
+      workingSeconds: this.workingSeconds,
+      restingMinutes: this.restingMinutes,
+      restingSeconds: this.restingSeconds,
+      currentReps: this.currentReps,
+      remainingWorkingRep: this.remainingWorkingRep
+    });
   }
 
   changeRepsNumber(value: number) {
-    // impossible to have negativ value
-    this.repsNumber + value >= 0 ? this.repsNumber += value : this.repsNumber = 0;
+    // impossible to have less than 1
+    this.repsNumber + value >= 1 ? this.repsNumber += value : this.repsNumber = 1;
   }
 
   addWorkInterval() {
@@ -95,11 +113,6 @@ export class HomePage {
 
   changeWorkingChain(value: number) {
     // impossible to have negativ value
-    this.workingChain + value >= 0 ? this.workingChain += value : this.workingChain = 0;
-  }
-
-  goToNextPage(){
-    this.navCtrl.push(TimerPage);
-    //this.navCtrl.setRoot(TimerPage);
+    this.workingChain + value >= 1 ? this.workingChain += value : this.workingChain = 1;
   }
 }

@@ -4,11 +4,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="timerPageStyle">
+<ion-content id="timerPageStyle">
   <ion-card>
-    <ion-card-header>3</ion-card-header>
-    <ion-label id="timer">{{minutes}}02:50{{seconds}}</ion-label>
-    <ion-label id="sentence">GET READY</ion-label>
+    <ion-card-header>{{repsNumber}}</ion-card-header>
+    <ion-label id="timer">{{currentMinutes}}:{{currentSeconds}}</ion-label>
+    <ion-label id="sentence">{{currentSentence}}</ion-label>
   </ion-card>
 
   <ion-card id="pauseButtonDiv">

@@ -1,0 +1,12 @@
+export class timerModel {
+    currentReps: number;
+    repsNumber: number;
+    workingChain: number;
+    currentMinutes: string;
+    currentSeconds: string;
+    workingMinutes: string;
+    workingSeconds: string;
+    restingMinutes: string;
+    restingSeconds: string;
+    remainingWorkingRep: number;
+}
