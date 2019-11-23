@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TimerPage } from '../pages/timer/timer';
+import { Insomnia } from '@ionic-native/insomnia';
 @NgModule({
   declarations: [
     MyApp,
@@ -26,6 +27,7 @@ import { TimerPage } from '../pages/timer/timer';
   providers: [
     StatusBar,
     SplashScreen,
+    Insomnia,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

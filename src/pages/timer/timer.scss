@@ -1,38 +1,81 @@
-#timerPageStyle {
-    background-color: #FFC107;
+@media (orientation:landscape) {
+    #timerPageStyle {
+        background-color: #FFC107;
+    }
+
+    #timerPageStyle ion-card{
+        background-color: #FFC107;
+        box-shadow: none !important;
+        align-content: center;
+    }
+
+    #timerPageStyle ion-card-header{
+        color: black;
+        font-size: 600%;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    #sentence{
+        color: #FFD041;
+        font-size: 400%;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    #timer{
+        font-size: 800%;
+        text-align: center;
+        font-weight: bold !important;
+    }
+
+    #pauseButtonDiv{
+        text-align:center;
+    }
+
+    #pauseButton{
+        background-color: #FFD041;
+        font-size: 250%;
+    }
 }
 
-#timerPageStyle ion-card{
-    background-color: #FFC107;
-    box-shadow: none !important;
-    align-content: center;
-}
+@media (orientation:portrait) {
+    #timerPageStyle {
+        background-color: #FFC107;
+    }
 
-#timerPageStyle ion-card-header{
-    color: black;
-    font-size: 600%;
-    text-align: center;
-    font-weight: bold !important;
-}
+    #timerPageStyle ion-card{
+        background-color: #FFC107;
+        box-shadow: none !important;
+        align-content: center;
+    }
 
-#sentence{
-    color: #FFD041;
-    font-size: 400%;
-    text-align: center;
-    font-weight: bold !important;
-}
+    #timerPageStyle ion-card-header{
+        color: black;
+        font-size: 600%;
+        text-align: center;
+        font-weight: bold !important;
+    }
 
-#timer{
-    font-size: 800%;
-    text-align: center;
-    font-weight: bold !important;
-}
+    #sentence{
+        color: #FFD041;
+        font-size: 400%;
+        text-align: center;
+        font-weight: bold !important;
+    }
 
-#pauseButtonDiv{
-    text-align:center;
-}
+    #timer{
+        font-size: 800%;
+        text-align: center;
+        font-weight: bold !important;
+    }
 
-#pauseButton{
-    background-color: #FFD041;
-    font-size: 250%;
+    #pauseButtonDiv{
+        text-align:center;
+    }
+
+    #pauseButton{
+        background-color: #FFD041;
+        font-size: 250%;
+    }
 }

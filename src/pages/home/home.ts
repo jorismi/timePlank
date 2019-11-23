@@ -1,4 +1,6 @@
 // TODO //
+// empecher la mise en veille => OK?
+// Gerer la rotation de l'écran
 // Changer de couleur entre les phases
 // Faire un screen de fin (récap?)
 // Ajouter du son à la fin des rep
@@ -21,7 +23,7 @@ export class HomePage {
   private repsNumber = 2;
   private initRepsNumber;
   private workingChain = 3;
-  remainingWorkingRep;
+  private remainingWorkingRep;
   private workingMinutes = "01";
   private workingSeconds = "00";
   private restingMinutes = "01";

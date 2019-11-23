@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { Insomnia } from '@ionic-native/insomnia';
 
 @Component({
   selector: 'page-timer',
@@ -22,7 +23,7 @@ export class TimerPage {
   private restingSeconds;
   interval;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private insomnia: Insomnia) {
     this.repsNumber = navParams.get('repsNumber');
     this.initRepsNumber = navParams.get('initRepsNumber');
     this.workingChain = navParams.get('workingChain');
@@ -54,10 +55,14 @@ export class TimerPage {
   }
 
   ngOnInit() {
+    // Prevent screen to sleep during workout
+    this.insomnia.keepAwake();
     this.startTimer();
   }
 
   goHomePage() {
+    // Allow screen to sleep again
+    this.insomnia.allowSleepAgain();
     clearInterval(this.interval);
     this.navCtrl.setRoot(HomePage);
   }
@@ -85,8 +90,9 @@ export class TimerPage {
       if (this.currentMinutes === "00" && this.currentSeconds === "00") {
         //alert(this.currentReps + 1 + '==' + (this.workingChain + 1) + '*' + this.initRepsNumber);
         if (this.currentReps + 1 == (this.workingChain + 1) * this.initRepsNumber) { // Last timer, going home
-          clearInterval(this.interval);
-          this.navCtrl.setRoot(HomePage);
+          //clearInterval(this.interval);
+          //this.navCtrl.setRoot(HomePage);
+          this.goHomePage();
         } else { // Going to next timer
           if (this.currentSentence == "REST") {
             this.repsNumber--;
