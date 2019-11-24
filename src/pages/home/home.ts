@@ -1,7 +1,6 @@
 // TODO //
-// empecher la mise en veille => OK?
-// Gerer la rotation de l'écran
-// Changer de couleur entre les phases
+// Garder en mémoire les derniers temps utilisés
+// Barre de notif vide?!
 // Faire un screen de fin (récap?)
 // Ajouter du son à la fin des rep
 // Variabiliser

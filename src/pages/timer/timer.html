@@ -1,13 +1,11 @@
-<ion-content id="timerPageStyle">
+<ion-content id="timerPageStyle" [ngClass]="{'bg-red': changeColor}">
   <ion-card>
     <ion-card-header>{{repsNumber}}</ion-card-header>
     <ion-label id="timer">{{currentMinutes}}:{{currentSeconds}}</ion-label>
     <ion-label id="sentence">{{currentSentence}}</ion-label>
   </ion-card>
 
-  <ion-card id="pauseButtonDiv">
-    <button ion-button icon-only id="pauseButton" (click)="goHomePage()">
-      <ion-icon name="pause"></ion-icon>
-    </button>
-  </ion-card>
+  <button ion-button icon-only id="pauseButton" (click)="goHomePage()">
+    <ion-icon name="close-circle"></ion-icon>
+  </button>
 </ion-content>
