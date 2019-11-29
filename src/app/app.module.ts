@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TimerPage } from '../pages/timer/timer';
 import { Insomnia } from '@ionic-native/insomnia';
+import { NativeStorage } from '@ionic-native/native-storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -28,6 +30,7 @@ import { Insomnia } from '@ionic-native/insomnia';
     StatusBar,
     SplashScreen,
     Insomnia,
+    NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

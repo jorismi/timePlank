@@ -1,5 +1,4 @@
 // TODO //
-// Garder en mémoire les derniers temps utilisés
 // Barre de notif vide?!
 // Faire un screen de fin (récap?)
 // Ajouter du son à la fin des rep
@@ -8,8 +7,9 @@
 // Gerer l'appui long sur + et - des chrono pour ajouter ou enlever plus ou moins vite
 
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { TimerPage } from '../timer/timer';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 const INCREMENT_STEP = 5;
 
@@ -28,7 +28,37 @@ export class HomePage {
   private restingMinutes = "01";
   private restingSeconds = "00";
   private currentReps = 0;
-  constructor(public navCtrl: NavController) {
+  constructor(platform: Platform, public navCtrl: NavController, private nativeStorage: NativeStorage) {
+    // Have to wait for the platform to be ready before using plugin nativeStorage
+    platform.ready().then(() => {
+      this.nativeStorage.getItem('appPref')
+        .then(
+          data => this.loadingAppPref(data),
+          error => alert(error)
+        );
+    });
+  }
+
+  // Saving app preferences on localStorage
+  savingAppPref() {
+    this.nativeStorage.setItem('appPref', {
+      prefRepsNumber: this.repsNumber, prefWorkingChain: this.workingChain,
+      prefWorkingMinutes: this.workingMinutes, prefWorkingSeconds: this.workingSeconds, prefRestingMinutes: this.restingMinutes, prefRestingSeconds: this.restingSeconds
+    })
+      .then(
+        () => console.log('Stored appPref!'),
+        error => console.error('Error storing appPref', error)
+      );
+  }
+
+  // Initialising variable with local appPreference
+  loadingAppPref(data) {
+    this.repsNumber = data.prefRepsNumber;
+    this.workingChain = data.prefWorkingChain;
+    this.workingMinutes = data.prefWorkingMinutes;
+    this.workingSeconds = data.prefWorkingSeconds;
+    this.restingMinutes = data.prefRestingMinutes;
+    this.restingSeconds = data.prefRestingSeconds;
   }
 
   goToTimerPage() {
@@ -48,6 +78,7 @@ export class HomePage {
   changeRepsNumber(value: number) {
     // impossible to have less than 1
     this.repsNumber + value >= 1 ? this.repsNumber += value : this.repsNumber = 1;
+    this.savingAppPref();
   }
 
   addWorkInterval() {
@@ -62,6 +93,7 @@ export class HomePage {
     }
     // Format seconds for always having 2 digit
     this.workingSeconds = ("0" + tmpSeconds).slice(-2);
+    this.savingAppPref();
   }
 
   removeWorkInterval() {
@@ -79,6 +111,17 @@ export class HomePage {
     }
     // Format seconds for always having 2 digit
     this.workingSeconds = ("0" + tmpSeconds).slice(-2);
+    this.savingAppPref();
+  }
+
+  savingMorkingIntervalPref() {
+    this.nativeStorage.setItem('appPref', {
+      prefWorkingMinutes: this.workingMinutes, prefWorkingSeconds: this.workingSeconds
+    })
+      .then(
+        () => console.log('Stored appPref!'),
+        error => console.error('Error storing appPref', error)
+      );
   }
 
   addRestInterval() {
@@ -93,6 +136,7 @@ export class HomePage {
     }
     // Format seconds for always having 2 digit
     this.restingSeconds = ("0" + tmpSeconds).slice(-2);
+    this.savingAppPref();
   }
 
   removeRestInterval() {
@@ -110,10 +154,22 @@ export class HomePage {
     }
     // Format seconds for always having 2 digit
     this.restingSeconds = ("0" + tmpSeconds).slice(-2);
+    this.savingAppPref();
+  }
+
+  savingRestingIntervalPref() {
+    this.nativeStorage.setItem('appPref', {
+      prefRestingMinutes: this.restingMinutes, prefRestingSeconds: this.restingSeconds
+    })
+      .then(
+        () => console.log('Stored appPref!'),
+        error => console.error('Error storing appPref', error)
+      );
   }
 
   changeWorkingChain(value: number) {
     // impossible to have negativ value
     this.workingChain + value >= 1 ? this.workingChain += value : this.workingChain = 1;
+    this.savingAppPref();
   }
 }
