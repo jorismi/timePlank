@@ -21,8 +21,9 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/app-preferences": "^5.17.1",
-    "@ionic-native/core": "~4.20.0",
+    "@ionic-native/core": "^4.20.0",
     "@ionic-native/insomnia": "^4.20.0",
+    "@ionic-native/native-audio": "^4.20.0",
     "@ionic-native/native-storage": "^4.20.0",
     "@ionic-native/splash-screen": "^4.20.0",
     "@ionic-native/status-bar": "^4.20.0",
@@ -31,6 +32,7 @@
     "cordova-browser": "6.0.0",
     "cordova-plugin-app-preferences": "git+https://github.com/apla/me.apla.cordova.app-preferences.git",
     "cordova-plugin-insomnia": "^4.3.0",
+    "cordova-plugin-nativeaudio": "^3.0.9",
     "cordova-plugin-nativestorage": "^2.3.2",
     "ionic-angular": "3.9.5",
     "ionicons": "3.0.0",
@@ -60,7 +62,8 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-insomnia": {},
-      "cordova-plugin-nativestorage": {}
+      "cordova-plugin-nativestorage": {},
+      "cordova-plugin-nativeaudio": {}
     },
     "platforms": [
       "android"

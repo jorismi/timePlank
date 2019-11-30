@@ -1,7 +1,5 @@
 // TODO //
-// Barre de notif vide?!
-// Faire un screen de fin (récap?)
-// Ajouter du son à la fin des rep
+// 1erre initialisation du local storage? normalement c'est ok
 // Variabiliser
 // Utilisation du modele?
 // Gerer l'appui long sur + et - des chrono pour ajouter ou enlever plus ou moins vite

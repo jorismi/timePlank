@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Insomnia } from '@ionic-native/insomnia';
+import { NativeAudio } from '@ionic-native/native-audio';
+//import { NativeAudio } from '@ionic-native/native-audio'
 
 @Component({
   selector: 'page-timer',
@@ -22,14 +24,25 @@ export class TimerPage {
   private restingMinutes;
   private restingSeconds;
   interval;
-  private readyTimeColor1="#FFC107";
-  private readyTimeColor2="#FFD041";
-  private workingTimeColor1="#00E676";
-  private workingTimeColor2="#3CEC96";
-  private restTimeColor1="#2196F3";
-  private restTimeColor2="#55AFF6";
+  private readyTimeColor1 = "#FFC107";
+  private readyTimeColor2 = "#FFD041";
+  private workingTimeColor1 = "#00E676";
+  private workingTimeColor2 = "#3CEC96";
+  private restTimeColor1 = "#2196F3";
+  private restTimeColor2 = "#55AFF6";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private insomnia: Insomnia) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private insomnia: Insomnia, private nativeAudio: NativeAudio, platform: Platform) {
+    platform.ready().then(() => {
+      this.preloadSound('three', 'assets/audio/three.mp3');
+      this.preloadSound('two', 'assets/audio/two.mp3');
+      this.preloadSound('one', 'assets/audio/one.mp3');
+      this.preloadSound('zero', 'assets/audio/zero.mp3');
+      // Prevent screen to sleep during workout
+      this.insomnia.keepAwake();
+      this.startTimer();
+
+    });
+
     this.repsNumber = navParams.get('repsNumber');
     this.initRepsNumber = navParams.get('initRepsNumber');
     this.workingChain = navParams.get('workingChain');
@@ -66,11 +79,11 @@ export class TimerPage {
     }
   }
 
-  ngOnInit() {
+  /*ngOnInit() {
     // Prevent screen to sleep during workout
     this.insomnia.keepAwake();
     this.startTimer();
-  }
+  }*/
 
   goHomePage() {
     // Allow screen to sleep again
@@ -129,5 +142,43 @@ export class TimerPage {
     }
     // Format seconds for always having 2 digit
     this.currentSeconds = ("0" + tmpSeconds).slice(-2);
+    // Playing number voice for the coutdown at 3
+    if (this.currentMinutes === "00") {
+      switch (this.currentSeconds) {
+        case "03": {
+          this.playSound("three");
+          break;
+        }
+        case "02": {
+          this.playSound("two");
+          break;
+        }
+        case "01": {
+          this.playSound("one");
+          break;
+        }
+        case "00": {
+          this.playSound("zero");
+          break;
+        }
+        default: break;
+      }
+    }
+  }
+
+  preloadSound(id, soundPath) {
+    this.nativeAudio.preloadComplex(id, soundPath, 1, 1, 0).then((success) => {
+      console.log("success loading sound : " + id);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  playSound(id) {
+    this.nativeAudio.play(id).then((success) => {
+      console.log("success playing");
+    }, (error) => {
+      console.log(error);
+    });
   }
 }
