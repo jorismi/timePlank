@@ -79,11 +79,6 @@ export class TimerPage {
     }
   }
 
-  /*ngOnInit() {
-    // Prevent screen to sleep during workout
-    this.insomnia.keepAwake();
-    this.startTimer();
-  }*/
 
   goHomePage() {
     // Allow screen to sleep again
